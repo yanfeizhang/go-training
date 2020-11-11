@@ -124,3 +124,5 @@
 - [如何优雅地写出Go代码](https://draveness.me/golang-101/)
 
 
+# 硬广个人技术公众号
+![avatar](imgs/wechat.png)
