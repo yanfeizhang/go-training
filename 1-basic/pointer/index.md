@@ -53,6 +53,5 @@ func main() {
 	swap2(&n1, &n2)
 	fmt.Println("n1:", n1, "\tn2:", n2)
 }
-
 ```
 

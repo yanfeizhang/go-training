@@ -23,7 +23,7 @@
  
 - 数据类型
     - [数据类型之整形、布尔、字符串](1-basic/int-bool-string/index.md)
-    - [指针数据类型](1-basic/pointer/main.go)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/pointer/main.go))                                                               
+    - [指针数据类型](1-basic/pointer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/pointer/main.go))                                                               
     - [数据类型之数组、切片](1-basic/array/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/array/main.go)
     - [数据类型之Map](1-basic/map/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/map/main.go)
     - [数据类型之结构体](1-basic/struct/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/struct/main.go)
@@ -38,6 +38,14 @@
     - [包](1-basic/package/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/package/main.go)  
     - [defer、panic和recover](1-basic/defer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/defer/main.go) 
     - [go module](1-basic/module/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/module/main.go)  
+
+- 并发操作
+    - [goroutine](2-concurrecy/goroutine/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/goroutine/main.go)
+    - [waitgroup](2-concurrecy/waitgroup/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/waitgroup/main.go)
+    - [channel](2-concurrecy/channel/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code（无缓存）](2-concurrecy/channel/buffer/main.go);&nbsp;&nbsp;[->code（带缓存）](2-concurrecy/channel/buffer/main.go)&nbsp;&nbsp;[->code（遍历）](2-concurrecy/channel/buffer/main.go)
+    - [select](2-concurrecy/select/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/select/main.go);
+    - [sync](con)
+
     
 - 标准库用法
     - bytes: 字节操作
