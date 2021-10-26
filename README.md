@@ -41,9 +41,10 @@
 
 - 并发操作
     - [goroutine](2-concurrecy/goroutine/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/goroutine/main.go)
-    - [channel](2-concurrecy/channel/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code（无缓存）](2-concurrecy/channel/buffer/main.go);&nbsp;&nbsp;[->code（带缓存）](2-concurrecy/channel/buffer/main.go)&nbsp;&nbsp;[->code（遍历）](2-concurrecy/channel/buffer/main.go)
+    - [channel](2-concurrecy/channel/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code（无缓存）](2-concurrecy/channel/buffer/main.go)&nbsp;&nbsp;[->code（带缓存）](2-concurrecy/channel/buffer/main.go)&nbsp;&nbsp;[->code（遍历）](2-concurrecy/channel/buffer/main.go)
     - [select](2-concurrecy/select/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/select/main.go);
-    - [sync](2-concurrecy/sync/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code(waitgroup)](2-concurrecy/sync/waitgroup/main.go);;&nbsp;&nbsp;[->code(mutex)](2-concurrecy/sync/mutex/main.go);;&nbsp;&nbsp;[->code(rwmutex)](2-concurrecy/sync/rwmutex/main.go);
+    - [sync](2-concurrecy/sync/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code(waitgroup)](2-concurrecy/sync/waitgroup/main.go)&nbsp;&nbsp;[->code(mutex)](2-concurrecy/sync/mutex/main.go)&nbsp;&nbsp;[->code(rwmutex)](2-concurrecy/sync/rwmutex/main.go);
+    - [context](2-concurrecy/context/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/context/main.go)
     
 - 标准库用法
     - bytes: 字节操作
