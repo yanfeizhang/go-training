@@ -47,6 +47,7 @@
     - context
         - [context源码浅析](2-concurrecy/context/mycontext/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/context/mycontext/main.go)
         - [timeout简单demo](2-concurrecy/context/timeout/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/context/timeout/main.go) 
+        - [value简单demo](2-concurrecy/context/value/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/context/value/main.go) 
            
 - 标准库用法
     - bytes: 字节操作

@@ -1,10 +1,38 @@
 context 主要用来在 goroutine 之间传递上下文信息，包括：取消信号、超时时间、截止时间、k-v 等。
 
-context 包的内部工作原理
+## 一、context 包的使用
 
-## 一、所定义的接口
+### 1.1 取消用法
+```golang
+func main(){
+	ctx1, cancel1 := context.WithCancel(context.Background())
+	ctx2, cancel2:= context.WithTimeout(context.Background(), 2*time.Second)
 
-### 1.1  Context 相关的接口
+	defer cancel1()
+	defer cancel2()
+
+	//Do something
+	go func(ctx1)
+	go func(ctx2)}
+```
+
+### 1.2 传值取值
+
+```golang
+func main(){
+	ctx := context.WithValue(context.Background(), "userid", "1234567")
+
+}
+func handler(ctx context.Context){
+
+}
+```
+
+接下来我们来看 context 包的内部工作原理
+
+## 二、所定义的接口
+
+### 2.1  Context 相关的接口
 
 Context 接口定义
 
@@ -32,7 +60,7 @@ type canceler interface {
 }
 ```
 
-### 1.2 emptyCtx 类型
+### 2.2 emptyCtx 类型
 
 其中 emptyCtx 实现了 Context 接口，不过所有的方法都是空实现。 
 
@@ -68,7 +96,7 @@ func TODO() Context {
 ```
 
 
-### 1.3 cancelCtx 类型
+### 2.3 cancelCtx 类型
 
 cancelCtx 采用匿名嵌套的方式申明了一个 context 成员
 
@@ -147,7 +175,7 @@ func (c *cancelCtx) cancel(removeFromParent bool, err error) {
 }
 ```
 
-### 1.4 timerCtx 类型
+### 2.4 timerCtx 类型
 
 ```golang
 // A timerCtx carries a timer and a deadline. It embeds a cancelCtx to
@@ -189,7 +217,7 @@ func (c *timerCtx) cancel(removeFromParent bool, err error) {
 }
 ```
 
-### 1.5 cancel 方法调用链
+### 2.5 cancel 方法调用链
 
 
 对于 timerCtx 的 cancel 来说，它不但会取消自己，还会取消其内嵌的 cancelCtx 的 cancel 方法。
@@ -246,10 +274,14 @@ func (c *cancelCtx) cancel(removeFromParent bool, err error) {
 }
 ```
 
-在 cancelCtx 的 cancel 方法下会 removeChild 把自己在其父的 context 下取消。`removeChild(c.Context, c)`
+在 cancelCtx 的 cancel 方法下做了三件事
+
+-1. close 自己的 chanel
+-2. 递归地调用它的所有子节点 cancel，进而让它们也能 close 自己的 chanel
+-3. 把自己在其父的 context 下取消。`removeChild(c.Context, c)`
 
 
-### 1.6 valueCtx 类型
+### 2.6 valueCtx 类型
 
 用来存储 KV 对儿。其内嵌了一个 Context 类型。
 
@@ -278,8 +310,8 @@ func (c *valueCtx) Value(key interface{}) interface{} {
 ```
 
 
-## 二、函数实现
-### 2.1 context.Background 和 context.Todo
+## 三、函数实现
+### 3.1 context.Background 和 context.Todo
 
 直接返回前面定义的两个 emptyCtx 。
 
@@ -292,7 +324,7 @@ func TODO() Context {
 }
 ```
 
-### 2.2 WithCancel
+### 3.2 WithCancel
 
 它用来创建一个 cancelCtx， 其 parent 是所传入的参数，一般来说，是 BackGround 或者是 Todo。
 
@@ -375,7 +407,7 @@ func (c *cancelCtx) cancel(removeFromParent bool, err error) {
 ```
 
 
-### 2.3 WithTimeout 函数
+### 3.3 WithTimeout 函数
 
 用法如下。
 
@@ -463,7 +495,7 @@ func (c *timerCtx) cancel(removeFromParent bool, err error) {
 ```
 
 
-### 2.4 WithValue 函数
+### 3.4 WithValue 函数
 
 使用方法
 
@@ -495,3 +527,26 @@ type valueCtx struct {
 ```
 
 这样返回的对象就是生成一个 valueCtx 对象出来，并用传入的 parent、key、value 来初始化。
+
+如果进行多次的 WithValue 调用，就会把值串成了树形结构。
+
+![](2-concurrecy/context/mycontext/value.png)
+
+我们再回顾一下 Value 查看函数的实现。
+
+```golang
+func (c *valueCtx) Value(key interface{}) interface{} {
+	if c.key == key {
+		return c.val
+	}
+	return c.Context.Value(key)
+}
+```
+
+先对比当前节点，如果不是自己存着的，就调用父节点进行查找。 如果最后仍然找不到，则调用到根节点 Background 或者 TODO 以后返回 nil。
+
+```golang
+func (*emptyCtx) Value(key interface{}) interface{} {
+	return nil
+}
+```
