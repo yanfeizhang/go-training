@@ -530,7 +530,7 @@ type valueCtx struct {
 
 如果进行多次的 WithValue 调用，就会把值串成了树形结构。
 
-![](2-concurrecy/context/mycontext/value.png)
+![](value.png)
 
 我们再回顾一下 Value 查看函数的实现。
 
