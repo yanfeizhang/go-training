@@ -7,29 +7,27 @@ import (
 )
 
 func main() {
-	//设置2秒超时
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	context.TODO()
-	defer cancel()
+	ctx, cancel := context.WithCancel(context.Background())
+	go watch(ctx, "【监控1】")
+	go watch(ctx, "【监控2】")
+	go watch(ctx, "【监控3】")
 
-	go handle(ctx)
-	time.Sleep(time.Second * 5)
-	fmt.Println("main routine end")
+	time.Sleep(10 * time.Second)
+	fmt.Println("可以了，通知监控停止")
+	cancel()
+	//为了检测监控过是否停止，如果没有监控输出，就表示停止了
+	time.Sleep(50 * time.Second)
 }
 
-func handle(ctx context.Context) {
-	ch := make(chan struct{}, 0)
-	go func() {
-		//设置1秒耗时的时候，子进程可以正常结束
-		//设置4秒耗时任务的时候，会触发ctx的超时
-		time.Sleep(time.Second * 1)
-		//time.Sleep(time.Second * 4)
-		ch <- struct{}{}
-	}()
-	select {
-	case <-ch:
-		fmt.Println("sub routine done")
-	case <-ctx.Done():
-		fmt.Println("sub routine timeout")
+func watch(ctx context.Context, name string) {
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Println(name, "监控退出，停止了...")
+			return
+		default:
+			fmt.Println(name, "goroutine监控中...")
+			time.Sleep(2 * time.Second)
+		}
 	}
 }

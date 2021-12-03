@@ -82,7 +82,7 @@ panic("ERROR")
 fmt.Println("end")
 ```
 
-panic之后虽然end同样没有输出，但是和没有recover的demo相比，协议并没有异常退出。
+panic之后虽然end同样没有输出，但是和没有recover的demo相比，程序并没有异常退出。
 
 ```go  
 start
