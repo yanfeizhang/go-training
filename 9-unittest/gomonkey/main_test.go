@@ -69,7 +69,9 @@ func TestMockGlobalVar(t *testing.T) {
 }
 
 //GoMonkey 之 mock 函数序列测试
-/*func TestMockFuncSeries(t *testing.T) {
+//记住要避免函数内联
+//go test -v -gcflags=all=-l
+func TestMockFuncSeries(t *testing.T) {
 	//模拟函数前三次调用输出
 	outputs := []gomonkey.OutputCell{
 		{Values: gomonkey.Params{1}}, // 模拟函数的第1次输出
@@ -80,9 +82,7 @@ func TestMockGlobalVar(t *testing.T) {
 	patches := gomonkey.ApplyFuncSeq(GetFromSql, outputs)
 	defer patches.Reset()
 
-	fmt.Println(GetFromSql())
-
-	assert.Equal(t, 1, Compute(1, 2), "they should be equal")
-	assert.Equal(t, 2, Compute(1, 3), "they should be equal")
 	assert.Equal(t, 3, Compute(1, 2), "they should be equal")
-}*/
+	assert.Equal(t, 5, Compute(1, 3), "they should be equal")
+	assert.Equal(t, 5, Compute(1, 2), "they should be equal")
+}
