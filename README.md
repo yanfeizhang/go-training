@@ -53,6 +53,14 @@
     - [gnet包]()
     - [evio]()
     - [netpoll]()
+- 编码解码
+    - encoding: 常见算法如 JSON、XML、Base64 等
+    - json 
+        - [encoding/json](4-codec/json/json/index.md)   [->code](4-codec/json/json/main.go)
+        - json-iterator
+        - tidwall/gjson  
+        - easyjson
+    - protobuf        
 - 单元测试
     - [基础单元测试](3-unittest/basic/main_test.go)           
     - [testify单元测试](3-unittest/testify/main_test.go)    
@@ -61,7 +69,6 @@
     - bytes: 字节操作
     - context
     - database: 数据库驱动和接口,包括mysql
-    - encoding: 常见算法如 JSON、XML、Base64 等
     - flag：命令行解析
     - fmt: 格式化操作
     - io：实现 I/O 原始访问接口及访问封装
@@ -104,11 +111,6 @@
     - viper
     - gRPC   
     - 日志库 
-- json编解码专题
-    - encoding/json:
-    - json-iterator
-    - tidwall/gjson  
-    - easyjson 
 - 并发
     - goroutine
     - channel
