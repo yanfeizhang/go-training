@@ -39,6 +39,9 @@
     - [defer、panic和recover](1-basic/defer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/defer/main.go) 
     - [go module](1-basic/module/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/module/main.go)  
 
+- 文本处理
+    - [go template使用](1-basic/template/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/template/main.go)
+
 - 并发操作
     - [goroutine](2-concurrecy/goroutine/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/goroutine/main.go)
     - [channel](2-concurrecy/channel/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code（无缓存）](2-concurrecy/channel/buffer/main.go)&nbsp;&nbsp;[->code（带缓存）](2-concurrecy/channel/buffer/main.go)&nbsp;&nbsp;[->code（遍历）](2-concurrecy/channel/buffer/main.go)
@@ -49,8 +52,8 @@
         - [timeout简单demo](2-concurrecy/context/timeout/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/context/timeout/main.go) 
         - [value简单demo](2-concurrecy/context/value/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](2-concurrecy/context/value/main.go) 
 - 网络操作
-    - [官方net包]() 网络库，支持 Socket、HTTP、邮件、RPC、SMTP 等  [->code](1-basic/function/main.go)
-    - [gnet包]()
+    - [官方net包](3-network/net/index.md) 网络库，支持 Socket、HTTP、邮件、RPC、SMTP 等  [->code](3-network/net/server/main.go)
+    - [gnet包](3-network/gnet/index.md)
     - [evio]()
     - [netpoll]()
 - 编码解码
