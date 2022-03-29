@@ -50,7 +50,7 @@ func TestMockMethod(t *testing.T) {
 
 	//方法 Mock
 	var s *Student
-	patches := gomonkey.ApplyMethod(reflect.TypeOf(s), "GetFromSql", func(s *Student) int {
+	patches := gomonkey.ApplyMethod(reflect.TypeOf(s), "GetFromSql", func(s *Student, n int) int {
 		return 5
 	})
 	defer patches.Reset()

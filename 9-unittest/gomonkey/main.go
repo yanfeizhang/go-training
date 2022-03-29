@@ -21,8 +21,8 @@ func (s *Student) Compute(a int, b int) int {
 }
 
 //写单元测试用的 GetFromSql 方法
-func (s *Student) GetFromSql() int {
-	return 5
+func (s *Student) GetFromSql(n int) int {
+	return n - n + 5
 }
 
 //全局变量
