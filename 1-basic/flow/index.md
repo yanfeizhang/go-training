@@ -17,11 +17,25 @@ if condition {
 for 初始语句;条件表达式;结束语句 {
     循环体语句
 }
+```
 
+## 条件循环
+```go
 for i := 0; i < 10; i++ {
 	fmt.Println(i)
 }
-// 无限循环
+```
+## while循环
+注意，golang没有提供while循环，都统一使用for的
+```go
+for != nil {
+    ...
+}
+```
+
+## 无限循环
+不加任何东西就是无限循环
+```go
 for {
     ...
 }

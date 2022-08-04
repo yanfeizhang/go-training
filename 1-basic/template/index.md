@@ -13,4 +13,6 @@ sweaters := Service{"TestNamespace", "MyApp", "Func1"}
 err = tmpl.Execute(os.Stdout, sweaters)
 ```
 
-参考： https://www.cnblogs.com/wanghui-garcia/p/10385062.html
+参考： 
+- [go标准库的学习-text/template ](https://www.cnblogs.com/wanghui-garcia/p/10385062.html)
+- [Go template高级用法](https://cloud.tencent.com/developer/article/1683688)  
