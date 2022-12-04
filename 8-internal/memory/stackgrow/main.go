@@ -1,23 +1,17 @@
 package main
 
 func main() {
-	a, b := 1, 2
-	_ = add1(a, b)
-	_ = add2(a, b)
-	_ = add3(a, b)
+	n := 1
+	_ = func1(n)
+	_ = func2(n)
 }
 
-func add1(x, y int) int {
-	_ = make([]byte, 20)
-	return x + y
-}
-
-func add2(x, y int) int {
+func func1(n int) int {
 	_ = make([]byte, 200)
-	return x + y
+	return n
 }
 
-func add3(x, y int) int {
-	_ = make([]byte, 5000)
-	return x + y
+func func2(n int) int {
+	_ = make([]byte, 20)
+	return n
 }
