@@ -63,11 +63,24 @@
         - json-iterator
         - tidwall/gjson  
         - easyjson
-    - protobuf        
+    - protobuf 
+- cgo
+  - [入门实例]
+    - [最简单的例子](6-cgo/examples/e01/main.go)
+    - [使用golang实现cgo函数并调用](6-cgo/examples/e02/main.go)
+  - [跨语言数据类型转换]
+    - [golang访问C语言中定义的struct、union、enum](6-cgo/examples/e03/main.go)
+    - [golang访问C语言中定义的数组、字符串](6-cgo/examples/e04/main.go)
+  - [跨语言函数调用]
+    - [golang调用C语言中定义的函数](6-cgo/examples/e05/main.go)
+    - [golang调用C语言函数性能测试](6-cgo/examples/e06/index.md)
+    - [go调用C语言函数内部原理](6-cgo/examples/e07/index.md)
+- 性能分析
+  - [USDT](5-performance/usdt/index.md)
 - 单元测试
-    - [基础单元测试](3-unittest/basic/main_test.go)           
-    - [testify单元测试](3-unittest/testify/main_test.go)    
-    - [gomonkey单元测试](3-unittest/gomonkey/main_test.go)    
+  - [基础单元测试](3-unittest/basic/main_test.go)
+  - [testify单元测试](3-unittest/testify/main_test.go)
+  - [gomonkey单元测试](3-unittest/gomonkey/main_test.go)
 - 标准库用法
     - bytes: 字节操作
     - context
