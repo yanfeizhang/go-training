@@ -75,6 +75,7 @@
     - [golang调用C语言中定义的函数](6-cgo/examples/e05/main.go)
     - [golang调用C语言函数性能测试](6-cgo/examples/e06/index.md)
     - [go调用C语言函数内部原理](6-cgo/examples/e07/index.md)
+    - [C语言调用go函数内部原理](6-cgo/examples/e08/index.md)
 - 性能分析
   - [USDT](5-performance/usdt/index.md)
 - 单元测试
