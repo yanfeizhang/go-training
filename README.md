@@ -26,7 +26,7 @@
     - [字符串内存布局](1-basic/string/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/string/main.go))
     - [指针数据类型](1-basic/pointer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/pointer/main.go))                                                               
     - [数据类型之数组、切片](1-basic/array/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/array/main.go)
-    - [切片内存布局](1-basic/slice/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/slice/main.go)
+    - [切片内存布局以及unsafe.Slice之零拷贝创建方式](1-basic/slice/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/slice/main.go)
     - [数据类型之Map](1-basic/map/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/map/main.go)
     - [数据类型之结构体](1-basic/struct/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/struct/main.go)
     - [数据类型之接口](1-basic/interface/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/interface/main.go)
