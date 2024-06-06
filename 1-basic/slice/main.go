@@ -12,6 +12,11 @@ type Device struct {
 	Imei  string
 }
 
+type MyStruct struct {
+	Id1 int
+	Id2 int
+}
+
 func main() {
 	//创建一个切片
 	s := make([]Device, 0, 5)
@@ -54,6 +59,18 @@ func main() {
 	fmt.Printf("%+v\n", stringHeader)
 	fmt.Println(unsafe.Pointer(stringHeader.Data))
 	fmt.Println(stringHeader.Len)
+
+	// 强制将一段内存空间解释为slice
+	var a1 = [16]int{1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5}
+	a2 := unsafe.Slice((*MyStruct)(unsafe.Pointer(&a1)), 8)
+	fmt.Printf("a1: (%v) (%v)\n", unsafe.Pointer(&a1), a1)
+	fmt.Printf("a2: (%v) (%v)\n", unsafe.Pointer(&a2), a2)
+
+	sliceHeader = (*reflect.SliceHeader)(unsafe.Pointer(&a2))
+	fmt.Printf("%+v\n", sliceHeader)
+	fmt.Println(unsafe.Pointer(sliceHeader.Data))
+	fmt.Println(sliceHeader.Len)
+	fmt.Println(sliceHeader.Cap)
 
 	// 查看字符串内存地址
 	/*fmt.Println(unsafe.Pointer(&s))
