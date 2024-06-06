@@ -23,8 +23,10 @@
  
 - 数据类型
     - [数据类型之整形、布尔、字符串](1-basic/int-bool-string/index.md)
+    - [字符串内存布局](1-basic/string/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/string/main.go))
     - [指针数据类型](1-basic/pointer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/pointer/main.go))                                                               
     - [数据类型之数组、切片](1-basic/array/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/array/main.go)
+    - [切片内存布局](1-basic/slice/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/slice/main.go)
     - [数据类型之Map](1-basic/map/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/map/main.go)
     - [数据类型之结构体](1-basic/struct/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/struct/main.go)
     - [数据类型之接口](1-basic/interface/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/interface/main.go)
@@ -72,10 +74,11 @@
     - [golang访问C语言中定义的struct、union、enum](6-cgo/examples/e03/main.go)
     - [golang访问C语言中定义的数组、字符串](6-cgo/examples/e04/main.go)
   - [跨语言函数调用]
-    - [golang调用C语言中定义的函数](6-cgo/examples/e05/main.go)
+    - [golang调用C语言中定义的函数demo](6-cgo/examples/e05/main.go)
     - [golang调用C语言函数性能测试](6-cgo/examples/e06/index.md)
     - [go调用C语言函数内部原理](6-cgo/examples/e07/index.md)
     - [C语言调用go函数内部原理](6-cgo/examples/e08/index.md)
+    - [Go跨语言调用核心技术](6-cgo/examples/e09/index.md)
 - 性能分析
   - [USDT](5-performance/usdt/index.md)
 - 单元测试
