@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 func swap1(n1 int, n2 int) {
 	nTemp := n2
@@ -13,6 +16,10 @@ func swap2(n1 *int, n2 *int) {
 	nTemp = *n2
 	*n2 = *n1
 	*n1 = nTemp
+}
+
+func some_func() {
+	fmt.Println("some_func()")
 }
 
 func main() {
@@ -44,4 +51,10 @@ func main() {
 	//2.2 使用指针作为参数，才能成功交换n1,n2的值
 	swap2(&n1, &n2)
 	fmt.Println("n1:", n1, "\tn2:", n2)
+
+	//3.函数指针
+	var pSomeFunc func()
+	pSomeFunc = some_func
+	fmt.Println(unsafe.Pointer(pSomeFunc))
+	//fmt.Println((int64)(pSomeFunc))
 }

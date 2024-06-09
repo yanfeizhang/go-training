@@ -5,11 +5,11 @@ import (
 	"time"
 )
 
-func hello(){
+func hello() {
 	fmt.Println("Hello")
 }
 
-func main(){
+func main() {
 	go hello()
-	time.Sleep(1)
+	time.Sleep(time.Hour)
 }

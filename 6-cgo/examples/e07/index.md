@@ -1,6 +1,6 @@
 我们通过分析一个简单的 cgo 函数调用来了解 cgo 的调用过程。
 
-如下是一个简单的 cgo 函数调用。
+如下是一个简单的 cgo 函数调用，在Go语言中调用了C语言实现的函数 println。
 ```go
 package main
 
@@ -31,6 +31,7 @@ func main() {
 }
 ```
 
+可以看到，C.sum函数被转换成了一个名为_Cfunc_sum的Go语言函数。
 _Cfunc_sum 函数（这是一个go函数，）在 cgo 生成的 _cgo_gotypes.go 文件中定义。
 
 ```shell
@@ -44,7 +45,9 @@ func _Cfunc_sum(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_int) {
 	return
 }
 ```
-_Cfunc_sum 是C 函数 sum 在 Go 空间的入口。它的参数 p0，p1 通过_Cgo_use 逃逸到了堆上。
+_Cfunc_sum 是C 函数 sum 在 Go 空间的入口。
+在Cfunc_sum中，通过_cgo_runtime_cgocall 函数再间接调用 C 函数 sum。
+它的参数 p0，p1 通过_Cgo_use 逃逸到了堆上。
 
 
 ## runtime.cgocall 函数
@@ -157,7 +160,7 @@ func handoffp(_p_ *p) {
 
 ### asmcgocall
 asmcgocall 是一个汇编函数，用于调用 C 函数。
-将当前栈移到系统栈去执行，因为 C 需要无穷大的栈，在 Go 的栈上执行 C 函数会导致栈溢出
+将当前栈移到系统栈去执行，因为 C 需要"无穷大"的栈，在 Go 的栈上执行 C 函数会导致栈溢出
 
 该函数在不同平台有不同的实现，拿amd64平台为例：
 
@@ -308,6 +311,7 @@ _cgo_e119c51a7968_Cfunc_sum(void *v)
 - _cgo_topofstack 函数用于 C 函数调用后恢复调用栈
 - _cgo_tsan_acquire 和 _cgo_tsan_release 则是用于扫描 CGO 相关的函数，是对 CGO 相关函数的指针做相关检查
 - sum用于真正计算两个数的和
+- 通过_cgo_a->r = _cgo_r将结果赋值给_cgo_a->r
 
 - 更详细的细节可以参考 https://golang.org/src/cmd/cgo/doc.go 内部的代码注释和 runtime.cgocall 函数的实现
 

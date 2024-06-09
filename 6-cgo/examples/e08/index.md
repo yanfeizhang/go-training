@@ -12,7 +12,9 @@ func sum(a, b C.int) C.int {
     return a + b
 }
 
-func main() {}
+func main() {
+	
+}
 ```
 
 将 Go 代码编译为一个 C 静态库，生成一个 sum.a 静态库和 sum.h 头文件。其中 sum.h 头文件将包含 sum 函数的声明，静态库中将包含 sum 函数的实现。
@@ -59,12 +61,8 @@ sum函数负责工作如下
 - 将 sum 函数的参数和返回值打包到一个结构体中
 - 通过 runtime/cgo.crosscall2 函数将结构体传给 _cgoexp_8313eaf44386_sum 函数执行
 
-
-
 ## Go运行时 runtime/cgo.crosscall2
-
 在 crosscall2 的参数中，fn 是中间代理函数的指针，a 是对应调用参数和返回值的结构体指针
-
 ```
 //file:runtime/cgo/asm_amd64.s
 TEXT crosscall2(SB),NOSPLIT,$0-0
@@ -92,8 +90,6 @@ TEXT crosscall2(SB),NOSPLIT,$0-0
 ```
 
 在 crosscall2 中，调用 runtime·cgocallback。 runtime·cgocallback也是一个用汇编实现的函数。
-
-
 
 ```go
 //file:runtime/asm_amd64.s
@@ -177,6 +173,29 @@ Go的代码执行环境就是goroutine以及Go的runtime，而C的执行环境�
 在Go中调用C函数时，runtime.cgocall中调用entersyscall脱离调度器管理。runtime.asmcgocall切换到m的g0栈，于是得到C的运行环境。
 在C中调用Go函数时，crosscall2解决gcc编译到6c编译之间的调用协议问题。cgocallback切换回goroutine栈。 runtime.cgocallbackg中调用exitsyscall恢复Go的运行环境。
 
+## C语言实际调用Go函数
+Linux下使用静态库，只需要在编译的时候，指定静态库的搜索路径（-L选项）、指定静态库名（不需要lib前缀和.a后缀，-l选项）。
+
+```shell
+#gcc main.c -L../StaticLibrary -lstaticdemo
+```
+-L：表示要连接的库所在目录
+-l：指定链接时需要的动态库，编译器查找动态连接库时有隐含的命名规则，即在给出的名字前面加上lib，后面加上.a或.so来确定库的名称。
+
+~~将go函数编译为静态库~~
+```shell
+#go build -buildmode=c-archive -o libsum.a main.go
+```
+
+将go函数编译为动态库(测试通过)
+```shell
+#go build -o libsum.dylib -buildmode=c-shared main.go
+```
+
+c加载动态链接库
+```shell
+#gcc main.c -L. -lsum
+```
 
 ## 参考
 - [cgo内部机制](https://chai2010.cn/advanced-go-programming-book/ch2-cgo/ch2-05-internal.html)

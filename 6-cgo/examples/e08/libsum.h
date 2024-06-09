@@ -21,6 +21,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #line 3 "main.go"
 int sum(int a, int b);
+int someCFunc(int n);
 
 #line 1 "cgo-generated-wrapper"
 
@@ -73,6 +74,7 @@ extern "C" {
 #endif
 
 extern int sum(int a, int b);
+extern int someCFunc(int n);
 
 #ifdef __cplusplus
 }

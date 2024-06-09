@@ -23,8 +23,7 @@
  
 - 数据类型
     - [数据类型之整形、布尔、字符串](1-basic/int-bool-string/index.md)
-    - [字符串: 使用、内存布局、深拷贝](1-basic/string/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/string/main.go))
-    - [指针数据类型](1-basic/pointer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/pointer/main.go))                                                               
+    - [字符串: 使用、内存布局、深拷贝](1-basic/string/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/string/main.go))                                                   
     - [数据类型之数组、切片](1-basic/array/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/array/main.go)
     - [切片内存布局以及unsafe.Slice之零拷贝创建方式](1-basic/slice/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/slice/main.go)
     - [数据类型之Map](1-basic/map/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/map/main.go)
@@ -33,7 +32,9 @@
     - [类型转换](1-basic/convert/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/convert/main.go)
     - [类型断言](1-basic/assert/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/assert/main.go)
     - [反射](1-basic/reflect/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/reflect/main.go)
-    
+- 指针
+  - [指针数据类型](1-basic/pointer/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/pointer/main.go))
+
 - 代码组织 
     - [函数、匿名函数、闭包](1-basic/function/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/function/main.go)
     - [方法](1-basic/method/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/method/main.go)
