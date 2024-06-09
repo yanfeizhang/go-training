@@ -17,11 +17,23 @@ func main() {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&s))
 	fmt.Printf("%+v\n", sh)
 	fmt.Println(unsafe.Pointer(sh.Data))
-	fmt.Println(sh.Len) // 5
+	fmt.Println(sh.Len)
 
 	// 查看指针指向的内容
 	arrPtr := (*[5]byte)(unsafe.Pointer(sh.Data))
 	fmt.Println(*arrPtr)
+
+	// 字符串浅拷贝
+	s1 := ""
+	p_s1 := &s1
+	*p_s1 = s
+
+	fmt.Println("\n浅拷贝字符串的展示")
+	fmt.Println(unsafe.Pointer(&s1))
+	sh = (*reflect.StringHeader)(unsafe.Pointer(&s))
+	fmt.Printf("%+v\n", sh)
+	fmt.Println(unsafe.Pointer(sh.Data))
+	fmt.Println(sh.Len)
 
 	// 字符串深拷贝, 使用 string
 	a := "12345"

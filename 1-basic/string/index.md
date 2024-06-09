@@ -58,6 +58,28 @@ Res := *(*string)(unsafe.Pointer(&s))
 fmt.Println(Res)
 ```
 
+## 字符串浅拷贝
+
+普通的字符串拷贝只是浅拷贝
+s := "Thiis is a long long long long long long long long long long long long string"
+
+```
+s1 := ""
+p_s1 := &s1
+*p_s1 = s
+```
+
+此时查看 s 和 s1 两个字符串虽然在栈中的地址不一样，但是其Header内容是一模一样的，指向同一块堆地址
+```
+旧字符串的展示
+0xc000014070
+&{Data:17478129 Len:77}
+
+浅拷贝字符串的展示
+0xc000014080
+&{Data:17478129 Len:77}
+```
+
 # 字符串深拷贝
 在通过 []byte 转换成 string 的时候，会进行深拷贝。所以我们可以利用它来完成。
 
