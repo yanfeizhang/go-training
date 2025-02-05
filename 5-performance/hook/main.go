@@ -6,6 +6,19 @@ import (
 	"os"
 )
 
+type People struct {
+	id int
+}
+
+//go:noinline
+func (p *People) GetID() {
+	fmt.Printf("calling People.GetID()\n")
+}
+
+func HookGetID(a ...interface{}) {
+	fmt.Fprintln(os.Stdout, "calling HookGetID")
+}
+
 func myPrintln(a ...interface{}) (n int, err error) {
 	fmt.Fprintln(os.Stdout, "before real Printfln")
 	return myPrintlnTramp(a...)
@@ -28,4 +41,8 @@ func myPrintlnTramp(a ...interface{}) (n int, err error) {
 func main() {
 	gohook.Hook(fmt.Println, myPrintln, myPrintlnTramp)
 	fmt.Println("hello world!")
+
+	p := People{1}
+	err := gohook.HookMethod(p, "GetID", HookGetID, myPrintlnTramp)
+	fmt.Println(err)
 }
