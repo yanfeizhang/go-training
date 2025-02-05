@@ -10,13 +10,24 @@ type People struct {
 	id int
 }
 
-//go:noinline
-func (p *People) GetID() {
+func (p *People) GetID() int {
 	fmt.Printf("calling People.GetID()\n")
+	return 0
 }
 
-func HookGetID(a ...interface{}) {
+func HookGetID(p *People) int {
 	fmt.Fprintln(os.Stdout, "calling HookGetID")
+	return TrampHookGetID(p)
+}
+
+func TrampHookGetID(p *People) int {
+	// a dummy function to make room for a shadow copy of the original function.
+	// it doesn't matter what we do here, just to create an addressable function with adequate size.
+	TrampHookGetID(p)
+	for {
+		fmt.Printf("hello")
+	}
+	return 0
 }
 
 func myPrintln(a ...interface{}) (n int, err error) {
@@ -42,7 +53,10 @@ func main() {
 	gohook.Hook(fmt.Println, myPrintln, myPrintlnTramp)
 	fmt.Println("hello world!")
 
-	p := People{1}
-	err := gohook.HookMethod(p, "GetID", HookGetID, myPrintlnTramp)
-	fmt.Println(err)
+	p := &People{1}
+	err := gohook.Hook((*People).GetID, HookGetID, TrampHookGetID)
+	if err != nil {
+		fmt.Println(err)
+	}
+	p.GetID()
 }
