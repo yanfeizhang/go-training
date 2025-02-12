@@ -16,7 +16,8 @@ func (p *People) GetID() int {
 }
 
 func HookGetID(p *People) int {
-	fmt.Fprintln(os.Stdout, "calling HookGetID")
+	//fmt.Fprintln(os.Stdout, "calling HookGetID")
+	fmt.Printf("calling Hook People.GetID()\n")
 	return TrampHookGetID(p)
 }
 
