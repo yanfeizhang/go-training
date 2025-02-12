@@ -30,6 +30,7 @@
     - [数据类型之结构体](1-basic/struct/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/struct/main.go)
     - [数据类型之接口](1-basic/interface/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/interface/main.go)
     - [类型转换](1-basic/convert/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/convert/main.go)
+    - [父子struct强制类型转换](1-basic/forceconvert/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/forceconvert/main.go)
     - [类型断言](1-basic/assert/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/assert/main.go)
     - [反射](1-basic/reflect/index.md) &nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/reflect/main.go)
 - 指针
