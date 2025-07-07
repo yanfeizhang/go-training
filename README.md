@@ -23,7 +23,8 @@
  
 - 数据类型
     - [数据类型之整形、布尔、字符串](1-basic/int-bool-string/index.md)
-    - [字符串: 使用、内存布局、深拷贝](1-basic/string/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/string/main.go))                                                   
+    - [字符串: 使用、内存布局、深拷贝](1-basic/string/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/string/main.go)) 
+    - [byte数组到字符串的零拷贝](1-basic/zerocopy/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code]((1-basic/zerocopy/main.go))
     - [数据类型之数组、切片](1-basic/array/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/array/main.go)
     - [切片内存布局以及unsafe.Slice之零拷贝创建方式](1-basic/slice/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/slice/main.go)
     - [数据类型之Map](1-basic/map/index.md)&nbsp;&nbsp;&nbsp;&nbsp;[->code](1-basic/map/main.go)
