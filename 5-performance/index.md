@@ -21,3 +21,4 @@ go test -cpu=1 -benchtime=2s -benchmem -bench .
 - [slice切片预留容量性能压测](reflect/main.go)
 - [各种字符串拼接方法性能对比](string/main.go)
 - [fmt.Sprintf和strcov.FormatInt转字符串性能对比](sprintf/main.go)
+- [Golang之内存池优化](syncpool/main.go)
