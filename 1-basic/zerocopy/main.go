@@ -36,7 +36,7 @@ func BytesToString(b []byte, offset int) string {
 	return *(*string)(unsafe.Pointer(&strHeader))
 }
 
-// StringToBytes 零拷贝将字符串转换为[]byte
+// BytesToBytes 零拷贝将字符串转换为[]byte
 func BytesToBytes(s []byte, offset int) []byte {
 	// 获取字节切片的底层结构指针
 	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&s))
@@ -50,6 +50,15 @@ func BytesToBytes(s []byte, offset int) []byte {
 
 	// 将切片结构指针转换为[]byte
 	return *(*[]byte)(unsafe.Pointer(&newSliceHeader))
+}
+
+// 验证这样使用没发生拷贝，估计runtime做过优化
+func BytesParam(b []byte) {
+	slice1Header := (*reflect.SliceHeader)(unsafe.Pointer(&b))
+	fmt.Printf("origin byte array：%+v\n", slice1Header)
+	fmt.Printf("\t%p\n", unsafe.Pointer(slice1Header.Data))
+	fmt.Printf("\t%d\n", slice1Header.Len)
+	fmt.Printf("\t%d\n", slice1Header.Cap)
 }
 
 func main() {
@@ -99,6 +108,10 @@ func main() {
 	fmt.Printf("\t%d\n", slice3Header.Len)
 	fmt.Printf("\t%d\n", slice3Header.Cap)
 	fmt.Println(b3)
+	fmt.Printf("\n\n")
+
+	// 3.验证 []byte[offset:] 会不会发生拷贝
+	BytesParam(b1[4:])
 
 	// 2. String 的 零拷贝测试
 	/*var s2 = "1234567890xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxuyyyyyy"
